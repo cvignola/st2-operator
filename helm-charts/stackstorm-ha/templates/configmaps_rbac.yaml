@@ -1,0 +1,59 @@
+{{ if .Values.enterprise.enabled }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-st2-rbac-roles
+  annotations:
+    description: Custom StackStorm RBAC roles, shipped in '/opt/stackstorm/rbac/roles/'
+  labels:
+    app: st2
+    tier: backend
+    vendor: stackstorm
+    support: enterprise
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+{{ toYaml .Values.enterprise.rbac.roles | indent 2 }}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-st2-rbac-assignments
+  annotations:
+    description: Custom StackStorm RBAC role assignments, shipped in '/opt/stackstorm/rbac/assignments/'
+  labels:
+    app: st2
+    tier: backend
+    vendor: stackstorm
+    support: enterprise
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+{{ toYaml .Values.enterprise.rbac.assignments | indent 2 }}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-st2-rbac-mappings
+  annotations:
+    description: StackStorm RBAC LDAP groups-to-roles mapping rules, shipped in '/opt/stackstorm/rbac/mappings/'
+  labels:
+    app: st2
+    tier: backend
+    vendor: stackstorm
+    support: enterprise
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+{{- if .Values.enterprise.rbac.mappings }}
+{{ toYaml .Values.enterprise.rbac.mappings | indent 2 }}
+{{ else }}
+  {}
+{{ end }}
+{{ end }}

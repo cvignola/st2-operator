@@ -1,0 +1,15 @@
+dependencies:
+- name: rabbitmq-ha
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 1.44.1
+- name: mongodb-replicaset
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 3.12.0
+- name: external-dns
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 1.6.1
+- name: etcd-operator
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 0.10.3
+digest: sha256:f2a9171bc71dcd33fb7c80f4df4699fa4fec26fc6a60c5ebd8ff844dc3c835c4
+generated: "2020-07-15T21:59:35.281473-05:00"
