@@ -8,7 +8,7 @@ From project root issue:
 ```
 ./build/build.sh
 
-Note: script is hard coded for cvignola git user id.  Either modify this script or create your own to suit your taste. 
+Note: script is hard coded for cvignola git user id.  Modify to taste. 
 ```
 
 ## Install 
